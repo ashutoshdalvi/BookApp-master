@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@drawable/gradient01"
+
+    >
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="91sp"
+        android:layout_height="91sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        app:civ_border_color="@color/cardview_dark_background"
+        app:civ_border_width="1sp"
+        app:srcCompat="@drawable/logo"
+
+
+        />
+
+    <EditText
+        android:layout_width="262sp"
+        android:layout_height="60sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="212sp"
+        android:drawableLeft="@drawable/person"
+        android:fontFamily="@font/aclonica"
+        android:hint=" Email Id"
+        android:inputType="textEmailAddress"
+        android:textSize="22dp" />
+
+    <EditText
+        android:layout_width="262sp"
+        android:layout_height="60sp"
+        android:layout_centerInParent="true"
+        android:drawableLeft="@drawable/lock"
+        android:fontFamily="@font/aclonica"
+        android:hint=" Password"
+        android:inputType="textPassword"
+        android:textSize="22dp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="200sp"
+        android:layout_height="45sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="180dp"
+        app:cardBackgroundColor="#17345f"
+        app:cardCornerRadius="20sp"
+        android:onClick="cardclick"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="90dp"
+                android:fontFamily="@font/aclonica"
+                android:gravity="center"
+                android:text="Login"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="25dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/signintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:fontFamily="@font/aclonica"
+        android:onClick="onClick"
+        android:text="No account? Sign in Here!"
+        android:textSize="20sp">
+
+    </TextView>
+
+
+</RelativeLayout>
