@@ -2,4 +2,6 @@
     <string name="app_name">BookApp</string>
     <string name="username">username</string>
     <string name="password">password</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

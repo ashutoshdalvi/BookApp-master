@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FlashScreen">
+        <activity
+            android:name=".FlashScreen"
+            android:theme="@style/AppTheme.NoActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,11 +20,16 @@
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".Registration" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Homepage"
+            android:theme="@style/AppTheme.NoActionbar">
+
+        </activity>
     </application>
 
 </manifest>

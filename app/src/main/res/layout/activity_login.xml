@@ -18,28 +18,28 @@
         app:civ_border_color="@color/cardview_dark_background"
         app:civ_border_width="1sp"
         app:srcCompat="@drawable/logo"
-
-
         />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="262sp"
         android:layout_height="60sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="212sp"
         android:drawableLeft="@drawable/person"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/adamina"
         android:hint=" Email Id"
         android:inputType="textEmailAddress"
         android:textSize="22dp" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="262sp"
         android:layout_height="60sp"
         android:layout_centerInParent="true"
         android:drawableLeft="@drawable/lock"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/adamina"
         android:hint=" Password"
         android:inputType="textPassword"
         android:textSize="22dp" />
@@ -64,7 +64,7 @@
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="90dp"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/adamina"
                 android:gravity="center"
                 android:text="Login"
                 android:textAlignment="center"
@@ -82,7 +82,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="120dp"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/adamina"
         android:onClick="onClick"
         android:text="No account? Sign in Here!"
         android:textSize="20sp">

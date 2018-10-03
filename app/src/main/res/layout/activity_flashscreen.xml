@@ -11,11 +11,9 @@
     <com.mikhaellopez.circularimageview.CircularImageView
         android:layout_width="135dp"
         android:layout_height="131dp"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="187dp"
-
-        app:civ_border="false"
+        android:layout_centerVertical="true"
+        app:civ_border="true"
         app:civ_shadow="true"
         app:civ_shadow_color="#FFE80404"
         app:srcCompat="@drawable/logo" />
