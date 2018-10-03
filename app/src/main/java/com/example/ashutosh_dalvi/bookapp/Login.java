@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
                                 startActivity(i);
                                 finish();
                             }else{
-                                Toast.makeText(Login.this, "Invalid data", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, " Invalid data", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
