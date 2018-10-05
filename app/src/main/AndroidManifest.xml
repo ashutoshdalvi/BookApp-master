@@ -26,10 +26,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Homepage"
-            android:theme="@style/AppTheme.NoActionbar">
-
-        </activity>
+        <activity
+            android:name=".Homepage"
+            android:theme="@style/AppTheme.NoActionbar"></activity>
+        <activity android:name=".Gridview"></activity>
     </application>
 
 </manifest>

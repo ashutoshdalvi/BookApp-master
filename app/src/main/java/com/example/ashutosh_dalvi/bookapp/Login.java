@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
     private EditText etmail,etpassword;
     private String email,password;
     private FirebaseAuth auth;
-    private DatabaseReference ref;
+
 
 
     @Override
@@ -54,8 +54,6 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-
-                                ref = FirebaseDatabase.getInstance().getReference(email);
                                 Intent i = new Intent(Login.this, Homepage.class);
                                 startActivity(i);
                                 finish();

@@ -6,7 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_height="match_parent"
     tools:context=".Homepage"
-    tools:openDrawer="start">
+    tools:openDrawer=" ">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +22,18 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fragment_container"></FrameLayout>
+            android:id="@+id/fragment_container">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:layout_marginTop="200dp"
+                android:layout_marginLeft="100dp"
+                android:onClick="click" />
+        </FrameLayout>
+
 
     </LinearLayout>
 
