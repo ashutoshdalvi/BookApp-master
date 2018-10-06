@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".FlashScreen"
-            android:theme="@style/AppTheme.NoActionbar">
+            android:theme="@style/AppTheme.NoActionbar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,8 +29,14 @@
 
         <activity
             android:name=".Homepage"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
-        <activity android:name=".Gridview"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity android:name=".Gridview" />
+        <activity android:name=".Account" />
+        <activity android:name=".Download" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".Aboutus" />
+        <activity android:name=".Credits" />
+        <activity android:name=".Help"></activity>
     </application>
 
 </manifest>

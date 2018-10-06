@@ -35,27 +35,35 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent i;
         switch (item.getItemId()){
             case R.id.account:
-
+                i = new Intent(this,Account.class);
+                startActivity(i);
                 break;
             case R.id.download:
-
+                i = new Intent(this,Download.class);
+                startActivity(i);
                 break;
             case R.id.help:
-
+                i = new Intent(this,Help.class);
+                startActivity(i);
                 break;
             case R.id.about_us:
-
+                i = new Intent(this,Account.class);
+                startActivity(i);
                 break;
             case R.id.credits:
-
+                i = new Intent(this,Credits.class);
+                startActivity(i);
                 break;
             case R.id.Home:
-
+                i = new Intent(this,Homepage.class);
+                startActivity(i);
                 break;
             case R.id.feedback:
-
+                i = new Intent(this,Feedback.class);
+                startActivity(i);
                 break;
         }
         return true;
@@ -72,5 +80,9 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         } else {
             super.onBackPressed();
         }
+    }
+    public void storageview(View view){
+        Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
     }
 }

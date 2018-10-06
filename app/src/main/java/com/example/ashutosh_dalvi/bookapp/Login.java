@@ -1,5 +1,6 @@
 package com.example.ashutosh_dalvi.bookapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,7 +30,6 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,26 +43,32 @@ public class Login extends AppCompatActivity {
     public void onClick(View view) {
         Intent i = new Intent(this, Registration.class);
         startActivity(i);
-
     }
+
     public void cardclick(View view){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
        try {
             email=etmail.getText().toString();
             password=etpassword.getText().toString();
+           progressDialog.show();
             auth.signInWithEmailAndPassword(email,password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                progressDialog.dismiss();
                                 Intent i = new Intent(Login.this, Homepage.class);
                                 startActivity(i);
                                 finish();
                             }else{
+                                progressDialog.dismiss();
                                 Toast.makeText(Login.this, " Invalid data", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         }catch(Exception e){
+            progressDialog.dismiss();
             Toast.makeText(Login.this, "Please enter valid data", Toast.LENGTH_SHORT).show();
         }
     }

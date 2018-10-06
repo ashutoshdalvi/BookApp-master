@@ -1,5 +1,6 @@
 package com.example.ashutosh_dalvi.bookapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -42,8 +43,11 @@ public class Registration extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ProgressDialog progressDialog = new ProgressDialog(Registration.this);
+                progressDialog.setTitle("Loading");
                 try {
                     getdata();
+                    progressDialog.show();
                     if (password.equals(cpassword)) {
                         auth.createUserWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -51,18 +55,22 @@ public class Registration extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             fdatabase.push().setValue(user);
+                                            progressDialog.dismiss();
                                             Intent i = new Intent(Registration.this, MainActivity.class);
-                                            startActivity(i);
+                                             startActivity(i);
                                             finish();
                                         } else {
+                                            progressDialog.dismiss();
                                             Toast.makeText(Registration.this, "Account already exists", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
                     } else {
+                        progressDialog.dismiss();
                         Toast.makeText(Registration.this, "Password not matching", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
+                    progressDialog.dismiss();
                     Toast.makeText(Registration.this, "Please enter valid data", Toast.LENGTH_SHORT).show();
                 }
             }
