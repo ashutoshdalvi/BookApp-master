@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
-                                Intent i = new Intent(Login.this, Homepage.class);
+                                Intent i = new Intent(Login.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
                             }else{

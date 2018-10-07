@@ -46,6 +46,7 @@ public class Registration extends AppCompatActivity {
                 final ProgressDialog progressDialog = new ProgressDialog(Registration.this);
                 progressDialog.setTitle("Loading");
                 try {
+
                     getdata();
                     progressDialog.show();
                     if (password.equals(cpassword)) {
