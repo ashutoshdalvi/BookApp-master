@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
-                              //  CurrentUser.setFirembaseUser( auth.getCurrentUser());
+                                CurrentUser.setFirembaseUser( auth.getCurrentUser());
                                 Intent i = new Intent(Login.this, Homepage.class);
                                 startActivity(i);
                                 finish();

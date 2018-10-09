@@ -60,7 +60,7 @@ public class Registration extends AppCompatActivity {
 
                                             //fdatabase.push().setValue(user);
                                             progressDialog.dismiss();
-                                            //CurrentUser.firebaseUser = auth.getCurrentUser();
+                                            CurrentUser.setFirembaseUser( auth.getCurrentUser());
 
                                              login();
                                             finish();

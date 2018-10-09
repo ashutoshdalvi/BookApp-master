@@ -17,7 +17,7 @@ public class Account extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CurrentUser.firebaseUser = null;
+                CurrentUser.setFirembaseUser (null);
                 Intent i = new Intent(Account.this, Login.class);
                 startActivity(i);
                 finish();
