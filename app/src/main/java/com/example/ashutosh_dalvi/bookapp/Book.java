@@ -3,49 +3,49 @@ package com.example.ashutosh_dalvi.bookapp;
 public class Book {
 
     private String name;
-    private String category;
     private String description;
-    private int thumbnail;
+    private String imgurl;
+    private String bookurl;
 
     public Book() {
     }
 
-    public Book(String name, String category, String description, int thumbnail) {
+    public Book(String name, String description, String imgurl, String bookurl) {
         this.name = name;
-        this.category = category;
         this.description = description;
-        this.thumbnail = thumbnail;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getThumbnail() {
-        return thumbnail;
+        this.imgurl = imgurl;
+        this.bookurl = bookurl;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
+
+    public void setBookurl(String bookurl) {
+        this.bookurl = bookurl;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public String getBookurl() {
+        return bookurl;
     }
 }

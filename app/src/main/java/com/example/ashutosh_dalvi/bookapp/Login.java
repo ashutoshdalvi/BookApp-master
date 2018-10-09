@@ -19,10 +19,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.PrivateKey;
+import com.example.ashutosh_dalvi.bookapp.CurrentUser;
 
 public class Login extends AppCompatActivity {
     private EditText etmail,etpassword;
@@ -34,10 +36,16 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         etmail = (EditText)findViewById(R.id.email);
         etpassword= (EditText)findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+            finishAffinity();
     }
 
     public void onClick(View view) {
@@ -47,7 +55,7 @@ public class Login extends AppCompatActivity {
 
     public void cardclick(View view){
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Loading");
        try {
             email=etmail.getText().toString();
             password=etpassword.getText().toString();
@@ -58,7 +66,8 @@ public class Login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
-                                Intent i = new Intent(Login.this, MainActivity.class);
+                              //  CurrentUser.setFirembaseUser( auth.getCurrentUser());
+                                Intent i = new Intent(Login.this, Homepage.class);
                                 startActivity(i);
                                 finish();
                             }else{
@@ -69,7 +78,7 @@ public class Login extends AppCompatActivity {
                     });
         }catch(Exception e){
             progressDialog.dismiss();
-            Toast.makeText(Login.this, "Please enter valid data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, "Please enter valid data(Exception)", Toast.LENGTH_SHORT).show();
         }
     }
 }

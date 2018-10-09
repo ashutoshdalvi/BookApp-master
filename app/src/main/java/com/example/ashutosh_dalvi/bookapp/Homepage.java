@@ -1,5 +1,6 @@
 package com.example.ashutosh_dalvi.bookapp;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -42,23 +43,17 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(i);
                 break;
             case R.id.download:
-                i = new Intent(this,Download.class);
+                i = new Intent();
+                i.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
                 startActivity(i);
                 break;
-            case R.id.help:
-                i = new Intent(this,Help.class);
-                startActivity(i);
-                break;
+
             case R.id.about_us:
-                i = new Intent(this,Account.class);
+                i = new Intent(this,Aboutus.class);
                 startActivity(i);
                 break;
             case R.id.credits:
                 i = new Intent(this,Credits.class);
-                startActivity(i);
-                break;
-            case R.id.Home:
-                i = new Intent(this,Homepage.class);
                 startActivity(i);
                 break;
             case R.id.feedback:
@@ -66,6 +61,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(i);
                 break;
         }
+        drawer.closeDrawer((GravityCompat.START));
         return true;
     }
 
@@ -78,11 +74,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer((GravityCompat.START));
         } else {
-            super.onBackPressed();
+            finishAffinity();
         }
-    }
-    public void storageview(View view){
-        Intent i = new Intent(this,MainActivity.class);
-        startActivity(i);
     }
 }

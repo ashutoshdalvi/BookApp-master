@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Login"
     android:background="@drawable/gradient01"
-
     >
 
     <com.mikhaellopez.circularimageview.CircularImageView

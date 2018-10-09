@@ -15,8 +15,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.ashutosh_dalvi.bookapp.CurrentUser;
 
 
 public class Registration extends AppCompatActivity {
@@ -44,7 +46,7 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final ProgressDialog progressDialog = new ProgressDialog(Registration.this);
-                progressDialog.setTitle("Loading");
+                progressDialog.setMessage("Loading");
                 try {
 
                     getdata();
@@ -55,10 +57,12 @@ public class Registration extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            fdatabase.push().setValue(user);
+
+                                            //fdatabase.push().setValue(user);
                                             progressDialog.dismiss();
-                                            Intent i = new Intent(Registration.this, MainActivity.class);
-                                             startActivity(i);
+                                            //CurrentUser.firebaseUser = auth.getCurrentUser();
+
+                                             login();
                                             finish();
                                         } else {
                                             progressDialog.dismiss();
@@ -72,7 +76,7 @@ public class Registration extends AppCompatActivity {
                     }
                 }catch (Exception e){
                     progressDialog.dismiss();
-                    Toast.makeText(Registration.this, "Please enter valid data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registration.this, "Please enter valid data(Exception)", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -93,5 +97,23 @@ public class Registration extends AppCompatActivity {
         user.setMail_id(email);
         user.setPassword(password);
         user.setContact(contact);
+    }
+    void login(){
+
+        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+                {
+                    FirebaseUser firebaseUser = auth.getCurrentUser();
+                    String uid =firebaseUser.getUid();
+                    fdatabase.child(uid).setValue(user);
+                    Intent i = new Intent(Registration.this, Homepage.class);
+                    startActivity(i);
+
+                }
+            }
+        });
+
     }
 }

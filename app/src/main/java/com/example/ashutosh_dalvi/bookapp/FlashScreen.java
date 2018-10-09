@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.ashutosh_dalvi.bookapp.CurrentUser;
 
 public class FlashScreen extends AppCompatActivity {
-    private final static int time=3000;
+    private final static int time = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,9 +15,15 @@ public class FlashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(FlashScreen.this,Login.class);
-                startActivity(i);
-                finish();
+                if(CurrentUser.getFirembaseUser()!=null){
+                    Intent i = new Intent(FlashScreen.this, Homepage.class);
+                    startActivity(i);
+                    finish();
+                }else {
+                    Intent i = new Intent(FlashScreen.this, Login.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         },time);
 
