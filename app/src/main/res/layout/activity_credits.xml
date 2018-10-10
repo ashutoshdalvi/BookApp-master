@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Credits">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/harrypotter4"
+        android:text="vhbjb"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:textColor="#000000"
+
+        />
+    </android.support.constraint.ConstraintLayout>
