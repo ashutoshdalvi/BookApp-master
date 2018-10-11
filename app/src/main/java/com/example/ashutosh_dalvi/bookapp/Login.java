@@ -1,10 +1,14 @@
 package com.example.ashutosh_dalvi.bookapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
+import android.support.v4.content.PermissionChecker;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.Permission;
 import java.security.PrivateKey;
 import com.example.ashutosh_dalvi.bookapp.CurrentUser;
 
@@ -60,25 +65,36 @@ public class Login extends AppCompatActivity {
             email=etmail.getText().toString();
             password=etpassword.getText().toString();
            progressDialog.show();
-            auth.signInWithEmailAndPassword(email,password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                progressDialog.dismiss();
-                                CurrentUser.setFirembaseUser( auth.getCurrentUser());
-                                Intent i = new Intent(Login.this, Homepage.class);
-                                startActivity(i);
-                                finish();
-                            }else{
-                                progressDialog.dismiss();
-                                Toast.makeText(Login.this, " Invalid data", Toast.LENGTH_SHORT).show();
+            if(isNetworkAvailable()) {
+                auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    progressDialog.dismiss();
+                                    CurrentUser.setFirembaseUser(auth.getCurrentUser());
+                                    Intent i = new Intent(Login.this, Homepage.class);
+                                    startActivity(i);
+                                    finish();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(Login.this, " Invalid data", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+            }else{
+                progressDialog.dismiss();
+                Toast.makeText(Login.this, "No Internet connection", Toast.LENGTH_SHORT).show();
+            }
         }catch(Exception e){
             progressDialog.dismiss();
             Toast.makeText(Login.this, "Please enter valid data(Exception)", Toast.LENGTH_SHORT).show();
         }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

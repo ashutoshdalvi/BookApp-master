@@ -40,7 +40,7 @@ public class Book_info extends AppCompatActivity {
         bookname = (TextView) findViewById(R.id.book_name_id);
         description=(TextView) findViewById(R.id.book_desc_id);
         bookimg = (ImageView)findViewById(R.id.book_img_id);
-        //read = (FloatingActionButton)findViewById(R.id.read);
+        read = (FloatingActionButton)findViewById(R.id.read);
         download= (FloatingActionButton)findViewById(R.id.download);
 
         description.setText(desc);
@@ -59,7 +59,7 @@ public class Book_info extends AppCompatActivity {
             }
         });
 
-     /*   read.setOnClickListener(new View.OnClickListener() {
+        read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Book_info.this,Book_view.class);
@@ -67,7 +67,7 @@ public class Book_info extends AppCompatActivity {
                 startActivity(i);
             }
         });
-*/
+
 
     }
 

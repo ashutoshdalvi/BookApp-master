@@ -57,8 +57,6 @@ public class Registration extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-
-                                            //fdatabase.push().setValue(user);
                                             progressDialog.dismiss();
                                             CurrentUser.setFirembaseUser( auth.getCurrentUser());
                                              login();
