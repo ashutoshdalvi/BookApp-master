@@ -4,48 +4,49 @@ public class Book {
 
     private String name;
     private String description;
-    private String imgurl;
-    private String bookurl;
+    private String image_url;
+    private String book_url;
 
     public Book() {
     }
 
-    public Book(String name, String description, String imgurl, String bookurl) {
+    public Book(String name, String description, String image_url, String book_url) {
         this.name = name;
         this.description = description;
-        this.imgurl = imgurl;
-        this.bookurl = bookurl;
+        this.image_url = image_url;
+        this.book_url = book_url;
+    }
+
+    public String getName() {
+
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl;
-    }
-
-    public void setBookurl(String bookurl) {
-        this.bookurl = bookurl;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public String getImgurl() {
-        return imgurl;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getBookurl() {
-        return bookurl;
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getBook_url() {
+        return book_url;
+    }
+
+    public void setBook_url(String book_url) {
+        this.book_url = book_url;
     }
 }

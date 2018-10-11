@@ -6,7 +6,8 @@
     android:id="@+id/drawer_layout"
     android:layout_height="match_parent"
     tools:context=".Homepage"
-    tools:openDrawer="start">
+    android:background="#ffffff"
+    tools:openDrawer="end">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,13 +20,65 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4sp" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_container">
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_id1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="160dp"
+                android:layout_marginTop="20dp">
 
             </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:text="  TRENDING BOOKS"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:fontFamily="@font/adamina"
+                android:layout_marginTop="185dp"
+                android:textColor="#090404"
+                android:gravity="left"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_id2"
+                android:layout_width="match_parent"
+                android:layout_height="235dp"
+                android:layout_marginTop="215dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:text="  NEW RELEASES"
+                android:textStyle="italic"
+                android:textSize="20sp"
+                android:fontFamily="@font/adamina"
+                android:layout_marginTop="455dp"
+                android:textColor="#090404"
+                android:gravity="left"/>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_id3"
+                android:layout_width="match_parent"
+                android:layout_height="235dp"
+                android:layout_marginTop="485dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </FrameLayout>
+</ScrollView>
+
 
 
 

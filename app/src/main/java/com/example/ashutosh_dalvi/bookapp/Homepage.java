@@ -1,34 +1,33 @@
 package com.example.ashutosh_dalvi.bookapp;
 
 import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class Homepage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
+    ArrayList<String> mNames= new ArrayList<>();
+    ArrayList<Integer > mImageUrls = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +44,10 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        recyclerview1();
+        recyclerview2();
+        recyclerview3();
+
 
 
 
@@ -89,6 +92,121 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         } else {
             finishAffinity();
         }
+    }
+
+    private void initImageBitmaps(){
+        mNames.add("MARATHI");
+        mImageUrls.add(R.drawable.marathi);
+
+        mNames.add("TECHNICAL");
+        mImageUrls.add(R.drawable.technical);
+
+        mNames.add("FICTION");
+        mImageUrls.add(R.drawable.fiction);
+
+        mNames.add("ROMANCE");
+        mImageUrls.add(R.drawable.romance);
+
+        mNames.add("THRILLER");
+        mImageUrls.add(R.drawable.thriller1);
+
+        mNames.add("SELF HELP");
+        mImageUrls.add(R.drawable.selfhelp);
+    }
+
+    public void recyclerview1(){
+
+
+        RecyclerView recyclerView =findViewById(R.id.recyclerview_id1);
+        initImageBitmaps();
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewAdapter adapter =new RecyclerViewAdapter(this,mNames,mImageUrls);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    private void recyclerview2() {
+
+        final RecyclerView recyclerView =findViewById(R.id.recyclerview_id2);
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Books").child("Trending");
+        ArrayList<Book> trendingbooks =new ArrayList<>();
+
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                //  String name=dataSnapshot.getKey();
+                Book b1 =dataSnapshot.getValue(Book.class);
+                ((Recyclerview_adapter)recyclerView.getAdapter()).update(b1);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        Recyclerview_adapter adapter =new Recyclerview_adapter(recyclerView,Homepage.this,trendingbooks);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void recyclerview3() {
+        final RecyclerView recyclerView =findViewById(R.id.recyclerview_id3);
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Books/New Releases");
+        ArrayList<Book> newreleases =new ArrayList<>();
+
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                //  String name=dataSnapshot.getKey();
+                Book b1 =dataSnapshot.getValue(Book.class);
+                ((Recyclerview_adapter)recyclerView.getAdapter()).update(b1);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        Recyclerview_adapter adapter =new Recyclerview_adapter(recyclerView,Homepage.this,newreleases);
+        recyclerView.setAdapter(adapter);
+
     }
 
 }

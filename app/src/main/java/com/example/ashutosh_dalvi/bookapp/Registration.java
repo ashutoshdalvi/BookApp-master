@@ -61,9 +61,7 @@ public class Registration extends AppCompatActivity {
                                             //fdatabase.push().setValue(user);
                                             progressDialog.dismiss();
                                             CurrentUser.setFirembaseUser( auth.getCurrentUser());
-
                                              login();
-                                            finish();
                                         } else {
                                             progressDialog.dismiss();
                                             Toast.makeText(Registration.this, "Account already exists", Toast.LENGTH_SHORT).show();
