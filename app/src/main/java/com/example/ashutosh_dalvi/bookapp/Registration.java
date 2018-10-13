@@ -3,6 +3,7 @@ package com.example.ashutosh_dalvi.bookapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
@@ -34,6 +35,8 @@ public class Registration extends AppCompatActivity {
     private User user = new User();
     FirebaseDatabase ref;
     FirebaseAuth auth;
+    private SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,6 @@ public class Registration extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             progressDialog.dismiss();
-                                            CurrentUser.setFirembaseUser( auth.getCurrentUser().getUid());
                                              login();
                                         } else {
                                             progressDialog.dismiss();
@@ -106,6 +108,11 @@ public class Registration extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         String uid = firebaseUser.getUid();
+                        sharedPreferences = getSharedPreferences("user_uid",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("uid",uid);
+                        editor.apply();
+                        CurrentUser.setFirembaseUser( auth.getCurrentUser().getUid());
                         fdatabase.child(uid).setValue(user);
                         Intent i = new Intent(Registration.this, Homepage.class);
                         startActivity(i);

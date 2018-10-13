@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Credits">
+    tools:context=".Credits"
+    android:orientation="vertical">
 
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Refrences"
+       android:textSize="40dp"
+       android:layout_marginLeft="100dp"
+       android:layout_marginTop="80dp"
+       android:textColor="#000000"
+       />
     <TextView
-        android:id="@+id/ref"
-        android:layout_width="148dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:text="Refrences"
-        android:textSize="30sp" />
+        android:text="1. www.pdfdrive.com"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
 
+        />
     <TextView
-        android:layout_width="269dp"
-        android:layout_height="86dp"
-        android:layout_below="@+id/ref"
-        android:layout_alignStart="@+id/ref"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-46dp"
-        android:layout_marginTop="158dp"
-        android:text="1. www.oceanofpdf.com
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="100dp"
+        android:text="2. www.oceanofpdf.com"
+        />
 
-2. www.pdfdrive.com"
-        android:textSize="20sp" />
-    </RelativeLayout>
+
+    </LinearLayout>

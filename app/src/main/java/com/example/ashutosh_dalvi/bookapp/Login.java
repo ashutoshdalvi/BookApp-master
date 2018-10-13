@@ -3,6 +3,7 @@ package com.example.ashutosh_dalvi.bookapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -35,6 +36,7 @@ public class Login extends AppCompatActivity {
     private EditText etmail,etpassword;
     private String email,password;
     private FirebaseAuth auth;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -73,7 +75,11 @@ public class Login extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     progressDialog.dismiss();
                                     String s = auth.getCurrentUser().getUid();
-                                    CurrentUser.setFirembaseUser(auth.getCurrentUser().getUid());
+                                    sharedPreferences = getSharedPreferences("user_uid",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("uid",s);
+                                    editor.apply();
+                                    CurrentUser.setFirembaseUser(s);
                                     Intent i = new Intent(Login.this, Homepage.class);
                                     startActivity(i);
                                     finish();
