@@ -32,64 +32,66 @@
         <activity
             android:name=".Marathi"
             android:label="Marathi"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Fiction"
             android:label="Fiction"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Homepage"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".Account"
             android:label="Account"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Download"
             android:label="Download"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Feedback"
             android:label="Feedback"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Aboutus"
             android:label="About"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Credits"
             android:label="Credits"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Help"
             android:label="Help"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Thriller"
             android:label="Thriller"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Selfhelp"
             android:label="Self Help"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Technical"
             android:label="Technical"
-            android:parentActivityName=".Homepage"/>
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Romance"
             android:label="Romance"
-            android:parentActivityName=".Homepage"
-            />
+            android:parentActivityName=".Homepage" />
         <activity
             android:name=".Book_info"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".Book_view"
             android:theme="@style/Theme.Design.NoActionBar" />
-        <activity android:name=".Search"
-            android:theme="@style/Theme.Design.NoActionBar"
-            ></activity>
+        <activity
+            android:name=".Search"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity android:name=".Edit_Info"
+            android:parentActivityName=".Account">
+        </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,10 @@
 package com.example.ashutosh_dalvi.bookapp;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.media.session.IMediaControllerCallback;
 import android.support.v7.app.AppCompatActivity;
@@ -12,35 +15,44 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.net.URI;
+import com.example.ashutosh_dalvi.bookapp.CurrentUser;
+
+
 public class Book_info extends AppCompatActivity {
-    private String book_name,book_url,image_url,desc;
+    private String book_name,book_url,image_url,desc,uid;
     private TextView bookname,description;
     private ImageView bookimg;
     private FloatingActionButton read,download;
-
-
+    private User user;
+    private DownloadManager downloadManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_info);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
-        /*if(getSupportActionBar()!=null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }*/
         toolbar.setNavigationIcon( R.drawable.backarrow);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 onBackPressed();
             }
         });
-        Intent i = getIntent();
+        uid =CurrentUser.getFirembaseUser();
 
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref2 = database.getReference("Downloaded Books");
+        final DatabaseReference ref = database.getReference("Users").child(uid);
+
+        Intent i = getIntent();
         book_name = i.getExtras().getString("book_name");
         book_url = i.getExtras().getString("book_url");
         desc = i.getExtras().getString("description");
@@ -56,14 +68,35 @@ public class Book_info extends AppCompatActivity {
         bookname.setText(book_name);
         Picasso.get().load(image_url).into(bookimg);
 
+        ref.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String key =dataSnapshot.getKey();
+                user = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent();
+               /* Intent intent=new Intent();
                 intent.setType(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(book_url));
-                startActivity(intent);
+                startActivity(intent);*/
+                downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                Uri uri = Uri.parse(book_url);
+                DownloadManager.Request request= new DownloadManager.Request(uri);
+                request.setTitle(book_name);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                Long reference = downloadManager.enqueue(request);
+                ref2.child(user.getName()).push().setValue(book_name);
 
             }
         });
