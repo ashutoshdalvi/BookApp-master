@@ -14,15 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".FlashScreen"
-            android:theme="@style/AppTheme.NoActionbar">
+            android:name=".Login"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
         <activity android:name=".Registration" />
 
         <meta-data
