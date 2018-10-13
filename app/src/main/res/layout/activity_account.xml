@@ -32,10 +32,11 @@
     <TextView
 
         android:id="@+id/user_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
         android:layout_marginLeft="20sp"
+        android:layout_marginRight="30sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="25dp"
         android:textSize="20sp"
@@ -54,10 +55,12 @@
         />
     <TextView
         android:id="@+id/email_id"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20sp"
         android:textColor="@android:color/black"
+        android:layout_marginRight="30sp"
+
         android:layout_marginTop="25dp"
         android:background="@android:color/holo_blue_light"
         android:textSize="20sp"
@@ -76,11 +79,13 @@
         />
     <TextView
         android:id="@+id/mobile_no"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
         android:layout_marginLeft="20sp"
         android:textColor="@android:color/black"
+        android:layout_marginRight="30sp"
+
         android:layout_marginTop="25dp"
         android:textSize="20sp"
 

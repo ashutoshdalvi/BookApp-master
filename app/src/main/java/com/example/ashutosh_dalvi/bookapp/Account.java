@@ -1,11 +1,15 @@
 package com.example.ashutosh_dalvi.bookapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,10 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Account extends AppCompatActivity {
-    CardView btn ;
-    String uid,s;
-    User user;
-    TextView name,email,contact;
+    private CardView btn ;
+    private String uid,s;
+    private User user;
+    private TextView name,email,contact;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +63,26 @@ public class Account extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //CurrentUser.setFirembaseUser (null);
                 Intent i = new Intent(Account.this, Edit_Info.class);
                 startActivity(i);
-                //finish();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logoutbar, menu);
+        return true;
+
+    }
+    public boolean logout_click(MenuItem item){
+        sharedPreferences = getSharedPreferences("user_uid",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+        CurrentUser.setFirembaseUser (null);
+        Intent i = new Intent(Account.this, Login.class);
+        startActivity(i);
+        return true;
     }
 }
