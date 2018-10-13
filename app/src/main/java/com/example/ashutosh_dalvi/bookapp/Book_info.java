@@ -26,11 +26,20 @@ public class Book_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_info);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
-        if(getSupportActionBar()!=null){
+        /*if(getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        Intent i =getIntent();
+        }*/
+        toolbar.setNavigationIcon( R.drawable.backarrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onBackPressed();
+            }
+        });
+        Intent i = getIntent();
 
         book_name = i.getExtras().getString("book_name");
         book_url = i.getExtras().getString("book_url");

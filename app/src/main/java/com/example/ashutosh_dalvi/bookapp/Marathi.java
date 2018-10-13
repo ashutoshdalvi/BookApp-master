@@ -1,11 +1,15 @@
 package com.example.ashutosh_dalvi.bookapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class MARATHI extends AppCompatActivity {
+public class Marathi extends AppCompatActivity {
 
 
 
@@ -26,7 +30,7 @@ public class MARATHI extends AppCompatActivity {
         setContentView(R.layout.grid_layout);
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Books/Marathi");
-        final RecyclerView rv=findViewById(R.id.recyclerview_marathi);
+        final RecyclerView rv=findViewById(R.id.recyclerview_1);
 
         ArrayList<Book> marathi =new ArrayList<>();
 
@@ -59,8 +63,22 @@ public class MARATHI extends AppCompatActivity {
             }
         });
 
-        Recyclerview_adapter adapter =new Recyclerview_adapter(rv,MARATHI.this,marathi);
+        Recyclerview_adapter adapter =new Recyclerview_adapter(rv,Marathi.this,marathi);
         rv.setLayoutManager(new GridLayoutManager(this,2));
         rv.setAdapter(adapter);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.searchbar, menu);
+        return true;
+
+    }
+    public boolean search_click(MenuItem item){
+        Intent i = new Intent(Marathi.this, Search.class);
+        i.putExtra("category","Marathi");
+        startActivity(i);
+        //finish();
+        return true;
     }
 }

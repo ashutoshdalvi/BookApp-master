@@ -1,11 +1,15 @@
 package com.example.ashutosh_dalvi.bookapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,7 +62,7 @@ public class Registration extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             progressDialog.dismiss();
-                                            CurrentUser.setFirembaseUser( auth.getCurrentUser());
+                                            CurrentUser.setFirembaseUser( auth.getCurrentUser().getUid());
                                              login();
                                         } else {
                                             progressDialog.dismiss();
@@ -95,21 +99,30 @@ public class Registration extends AppCompatActivity {
         user.setContact(contact);
     }
     void login(){
+        if(isNetworkAvailable()) {
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = auth.getCurrentUser();
+                        String uid = firebaseUser.getUid();
+                        fdatabase.child(uid).setValue(user);
+                        Intent i = new Intent(Registration.this, Homepage.class);
+                        startActivity(i);
 
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    FirebaseUser firebaseUser = auth.getCurrentUser();
-                    String uid =firebaseUser.getUid();
-                    fdatabase.child(uid).setValue(user);
-                    Intent i = new Intent(Registration.this, Homepage.class);
-                    startActivity(i);
-
+                    }
                 }
-            }
-        });
+            });
+        }else {
+            Toast.makeText(Registration.this, "No Internet connection", Toast.LENGTH_SHORT).show();
 
+        }
+
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

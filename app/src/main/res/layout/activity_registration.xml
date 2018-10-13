@@ -20,7 +20,7 @@
         android:ems="10"
         android:fontFamily="@font/adamina"
         android:hint=" Name"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         android:textSize="18dp" />
 
     <EditText

@@ -30,49 +30,66 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".MARATHI"
-            android:label="Marathi" />
+            android:name=".Marathi"
+            android:label="Marathi"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Fiction"
-            android:label="Fiction" />
+            android:label="Fiction"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Homepage"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".Account"
-            android:label="Account" />
+            android:label="Account"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Download"
-            android:label="Download" />
+            android:label="Download"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Feedback"
-            android:label="Feedback" />
+            android:label="Feedback"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Aboutus"
-            android:label="About_us" />
+            android:label="About"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Credits"
-            android:label="Credits" />
+            android:label="Credits"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Help"
-            android:label="Help" />
+            android:label="Help"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Thriller"
-            android:label="Thriller" />
+            android:label="Thriller"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Selfhelp"
-            android:label="Self Help" />
+            android:label="Self Help"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Technical"
-            android:label="Technical" />
+            android:label="Technical"
+            android:parentActivityName=".Homepage"/>
         <activity
             android:name=".Romance"
-            android:label="Romance" />
+            android:label="Romance"
+            android:parentActivityName=".Homepage"
+            />
         <activity
             android:name=".Book_info"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
-        <activity android:name=".Book_view"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".Book_view"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity android:name=".Search"
+            android:theme="@style/Theme.Design.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

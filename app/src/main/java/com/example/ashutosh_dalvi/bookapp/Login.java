@@ -64,15 +64,16 @@ public class Login extends AppCompatActivity {
        try {
             email=etmail.getText().toString();
             password=etpassword.getText().toString();
+           if(isNetworkAvailable()) {
            progressDialog.show();
-            if(isNetworkAvailable()) {
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     progressDialog.dismiss();
-                                    CurrentUser.setFirembaseUser(auth.getCurrentUser());
+                                    String s = auth.getCurrentUser().getUid();
+                                    CurrentUser.setFirembaseUser(auth.getCurrentUser().getUid());
                                     Intent i = new Intent(Login.this, Homepage.class);
                                     startActivity(i);
                                     finish();
@@ -83,13 +84,14 @@ public class Login extends AppCompatActivity {
                             }
                         });
             }else{
-                progressDialog.dismiss();
                 Toast.makeText(Login.this, "No Internet connection", Toast.LENGTH_SHORT).show();
             }
         }catch(Exception e){
             progressDialog.dismiss();
             Toast.makeText(Login.this, "Please enter valid data(Exception)", Toast.LENGTH_SHORT).show();
         }
+        //FirebaseAuth.getInstance().signOut();
+       // auth.signOut();
     }
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager

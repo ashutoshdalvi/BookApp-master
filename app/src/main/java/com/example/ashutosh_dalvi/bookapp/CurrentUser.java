@@ -1,15 +1,14 @@
 package com.example.ashutosh_dalvi.bookapp;
 
-import com.google.firebase.auth.FirebaseUser;
-
 public class CurrentUser {
-    public static FirebaseUser getFirembaseUser() {
+    public static String firembaseUser;
+    public static String  getFirembaseUser() {
         return firembaseUser;
     }
 
-    public static void setFirembaseUser(FirebaseUser firembaseUser) {
+    public static void setFirembaseUser(String firembaseUser) {
         CurrentUser.firembaseUser = firembaseUser;
     }
 
-    public static FirebaseUser firembaseUser;
+
 }

@@ -1,7 +1,10 @@
 package com.example.ashutosh_dalvi.bookapp;
 
 import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -48,8 +54,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         recyclerview2();
         recyclerview3();
 
-
-
+        if(!isNetworkAvailable())
+            Toast.makeText(Homepage.this, "No Internet connection", Toast.LENGTH_LONG).show();
 
     }
 
@@ -95,7 +101,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     private void initImageBitmaps(){
-        mNames.add("MARATHI");
+        mNames.add("Marathi");
         mImageUrls.add(R.drawable.marathi);
 
         mNames.add("TECHNICAL");
@@ -115,11 +121,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     public void recyclerview1(){
-
-
         RecyclerView recyclerView =findViewById(R.id.recyclerview_id1);
         initImageBitmaps();
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter =new RecyclerViewAdapter(this,mNames,mImageUrls);
@@ -132,7 +135,6 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_id2);
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Books").child("Trending");
         ArrayList<Book> trendingbooks =new ArrayList<>();
-
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -208,6 +210,26 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         recyclerView.setAdapter(adapter);
 
     }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.searchbar, menu);
+        return true;
+
+    }
+   public boolean search_click(MenuItem item){
+       Intent i = new Intent(Homepage.this, Search.class);
+       i.putExtra("category","All Books");
+       startActivity(i);
+       return true;
+   }
 
 }
 

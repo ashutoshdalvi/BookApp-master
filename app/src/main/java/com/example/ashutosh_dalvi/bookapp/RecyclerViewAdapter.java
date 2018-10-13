@@ -49,8 +49,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 switch (mNames.get(position)){
 
-                    case "MARATHI":{
-                        Intent intent = new Intent(mContext,MARATHI.class);
+                    case "Marathi":{
+                        Intent intent = new Intent(mContext,Marathi.class);
                         mContext.startActivity(intent);
                         break;
                     }

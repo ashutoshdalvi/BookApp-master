@@ -37,7 +37,9 @@ public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adap
         mbook.add(new Book(b1.getName(),b1.getDescription(),b1.getImage_url(),b1.getBook_url()));
         notifyDataSetChanged();
     }
-
+    public void clear(){
+        mbook.clear();
+    }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

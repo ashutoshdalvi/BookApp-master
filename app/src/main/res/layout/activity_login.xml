@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="262sp"
+        android:layout_width="300sp"
         android:layout_height="60sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="262sp"
+        android:layout_width="300sp"
         android:layout_height="60sp"
         android:layout_centerInParent="true"
         android:drawableLeft="@drawable/lock"

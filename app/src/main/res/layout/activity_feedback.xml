@@ -7,24 +7,34 @@
     tools:context=".Feedback">
 
     <TextView
-        android:layout_width="200sp"
-        android:layout_height="200sp"
+        android:id="@+id/fed"
+        android:layout_width="390dp"
+        android:layout_height="147dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="79dp"
+
         android:fontFamily="serif"
+        android:layout_marginEnd="10dp"
         android:gravity="center"
         android:text="Your Suggestions.Help us to improve our app"
         android:textSize="20sp" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="200sp"
+        android:id="@+id/feedback"
+        android:layout_width="349dp"
+        android:layout_height="89dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="114dp"
-        android:background="@color/cardview_light_background"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="19dp"
         android:fontFamily="serif"
-        android:hint="                                  Feedback..." />
+        android:gravity="center"
+        android:hint="FEEDBACK" />
 
+    <Button
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_alignBaseline="@+id/feedback"
+        android:background="@drawable/submit"
+        android:layout_toEndOf="@+id/feedback" />
 </RelativeLayout>
