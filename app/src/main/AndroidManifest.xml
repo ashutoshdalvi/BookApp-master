@@ -15,15 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login"
-            android:theme="@style/AppTheme.Launcher">
+            android:name=".FlashScreen"
+            android:theme="@style/AppTheme.NoActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registration" />
+        <activity android:name=".Login" />
+        <activity android:name=".Registration"
+            android:parentActivityName=".Login"/>
 
         <meta-data
             android:name="preloaded_fonts"
@@ -91,6 +93,7 @@
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity android:name=".Edit_Info"
             android:parentActivityName=".Account">
+
         </activity>
     </application>
 

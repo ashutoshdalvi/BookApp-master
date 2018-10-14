@@ -8,11 +8,12 @@ import android.os.Bundle;
 import com.example.ashutosh_dalvi.bookapp.CurrentUser;
 
 public class FlashScreen extends AppCompatActivity {
-    private final static int time = 2000;
+    private final static int time = 1200;
     private SharedPreferences sharedPreferences;
     private String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoActionbar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashscreen);
         sharedPreferences = getSharedPreferences("user_uid",MODE_PRIVATE);

@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="3. Neha Bhomdve"
+        android:text="3. Neha Bhondve"
         android:layout_marginLeft="120dp"
         android:textSize="20dp"
         />
@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="200dp"
         android:layout_marginLeft="25dp"
         android:text="This app should be used for education purpose only."
         android:textSize="15dp" />

@@ -53,7 +53,7 @@
                 android:id="@+id/recyclerview_id2"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginTop="220dp">
+                android:layout_marginTop="216dp">
 
             </android.support.v7.widget.RecyclerView>
 
@@ -73,7 +73,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_id3"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="260dp"
                 android:layout_marginTop="495dp">
 
             </android.support.v7.widget.RecyclerView>
