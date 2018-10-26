@@ -113,7 +113,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     private void initImageBitmaps(){
-        mNames.add("Marathi");
+        mNames.add("MARATHI");
         mImageUrls.add(R.drawable.marathi);
 
         mNames.add("TECHNICAL");

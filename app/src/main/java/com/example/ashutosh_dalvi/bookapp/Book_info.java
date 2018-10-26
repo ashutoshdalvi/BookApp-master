@@ -59,6 +59,7 @@ public class Book_info extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref2 = database.getReference("Downloaded Books");
+        final DatabaseReference ref3 = database.getReference("Books Read");
         final DatabaseReference ref = database.getReference("Users").child(uid);
 
         Intent i = getIntent();
@@ -119,7 +120,7 @@ public class Book_info extends AppCompatActivity {
                     request.setVisibleInDownloadsUi(true);
                     request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, book_name + ".pdf");
                     Long reference = downloadManager.enqueue(request);
-                    ref2.child(user.getName()).push().setValue(book_name);
+                    ref2.child(user.getName()).child(book_name).setValue(book_name);
                 }else {
                     Toast.makeText(Book_info.this, "No Internet connection", Toast.LENGTH_SHORT).show();
 
@@ -131,6 +132,7 @@ public class Book_info extends AppCompatActivity {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ref3.child(user.getName()).child(book_name).setValue(book_name);
                 Intent i = new Intent(Book_info.this,Book_view.class);
                 i.putExtra("url",book_url);
                 startActivity(i);

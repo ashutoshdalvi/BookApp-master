@@ -66,8 +66,6 @@ public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adap
                 i.putExtra("description",mbook.get(position).getDescription());
                 mcontext.startActivity(i);
 
-
-
             }
         });
 

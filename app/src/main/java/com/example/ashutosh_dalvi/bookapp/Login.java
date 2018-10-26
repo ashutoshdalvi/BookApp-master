@@ -36,6 +36,8 @@ public class Login extends AppCompatActivity {
     private EditText etmail,etpassword;
     private String email,password;
     private FirebaseAuth auth;
+    FirebaseDatabase ref;
+    DatabaseReference fdatabase;
     private SharedPreferences sharedPreferences;
 
 
@@ -48,7 +50,8 @@ public class Login extends AppCompatActivity {
         etmail = (EditText)findViewById(R.id.email);
         etpassword= (EditText)findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
-
+        ref = FirebaseDatabase.getInstance();
+        fdatabase = ref.getReference("Users");
     }
 
     @Override
@@ -61,6 +64,10 @@ public class Login extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onChangePassword(View view){
+        Intent i = new Intent(this, ForgotPassword.class);
+        startActivity(i);
+    }
     public void cardclick(View view){
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading");
@@ -74,8 +81,8 @@ public class Login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    progressDialog.dismiss();
                                     String s = auth.getCurrentUser().getUid();
+                                    fdatabase.child(s).child("password").setValue(password);
                                     sharedPreferences = getSharedPreferences("user_uid",MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString("uid",s);
@@ -83,6 +90,7 @@ public class Login extends AppCompatActivity {
                                     CurrentUser.setFirembaseUser(s);
                                     Intent i = new Intent(Login.this, Homepage.class);
                                     startActivity(i);
+                                    progressDialog.dismiss();
                                     finish();
                                 } else {
                                     progressDialog.dismiss();
@@ -95,7 +103,7 @@ public class Login extends AppCompatActivity {
             }
         }catch(Exception e){
             progressDialog.dismiss();
-            Toast.makeText(Login.this, "Please enter valid data(Exception)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, "Please enter valid data", Toast.LENGTH_SHORT).show();
         }
         //FirebaseAuth.getInstance().signOut();
        // auth.signOut();

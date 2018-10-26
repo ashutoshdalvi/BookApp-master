@@ -37,7 +37,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-       // holder.image.setImageResource(thumbnail.get(position));
         holder.name.setText(mNames.get(position));
         holder.name.setBackgroundResource(thumbnail.get(position));
 
@@ -49,7 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 switch (mNames.get(position)){
 
-                    case "Marathi":{
+                    case "MARATHI":{
                         Intent intent = new Intent(mContext,Marathi.class);
                         mContext.startActivity(intent);
                         break;

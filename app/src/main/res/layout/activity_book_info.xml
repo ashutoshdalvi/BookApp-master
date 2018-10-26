@@ -86,12 +86,22 @@
                 app:cardUseCompatPadding="true"
                 >
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="#ffffff"
+                    android:lineSpacingMultiplier="1.5"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp"
+                    android:padding="12dp"
+                    />
+                <TextView
                     android:id="@+id/book_desc_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description"
                     android:lineSpacingMultiplier="1.5"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="40dp"
                     android:textSize="20sp"
                     android:padding="12dp"
                     />

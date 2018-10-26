@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -24,8 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-        <activity android:name=".Registration"
-            android:parentActivityName=".Login"/>
+        <activity
+            android:name=".Registration"
+            android:parentActivityName=".Login" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -45,10 +45,6 @@
         <activity
             android:name=".Account"
             android:label="Account"
-            android:parentActivityName=".Homepage" />
-        <activity
-            android:name=".Download"
-            android:label="Download"
             android:parentActivityName=".Homepage" />
         <activity
             android:name=".Feedback"
@@ -91,8 +87,13 @@
         <activity
             android:name=".Search"
             android:theme="@style/Theme.Design.NoActionBar" />
-        <activity android:name=".Edit_Info"
-            android:parentActivityName=".Account">
+        <activity
+            android:name=".Edit_Info"
+            android:parentActivityName=".Account"></activity>
+        <activity android:name=".ForgotPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".Login"
+            >
 
         </activity>
     </application>
